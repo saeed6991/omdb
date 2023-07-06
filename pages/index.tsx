@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import styles from '../styles/Search.module.css';
+import { useRouter } from 'next/router';
 require('dotenv').config();
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Search() {
   const [searchTerm, setSearchTerm] = useState('');
+  const router = useRouter();
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -15,15 +17,14 @@ export default function Search() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Perform the desired action with the search term, e.g., make an API call
     console.log('Search term:', searchTerm);
-    var apicall = "https://www.omdbapi.com/?";
-    const apiKey = "&apikey=41b8dffa";
-    apicall = apicall + "t=" + searchTerm + apiKey;  
-    const response = await fetch(apicall);
-    const jsonData = await response.json();
-    console.log(jsonData["Title"]);
+    router.push({
+      pathname: '/search-results',
+      query: { searchItem: searchTerm, page: 1} // Include the searchItem in the query object
+    });
   };
+
+  
 
   return (
     <>
@@ -48,3 +49,5 @@ export default function Search() {
     </>
   );
 }
+
+
