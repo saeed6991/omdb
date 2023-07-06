@@ -1,0 +1,25 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.searchInput {
+  display: flex;
+  height:6vh;
+  width: 60vw;
+  margin-top: 200px;
+}
+
+.searchButton {
+  margin-top: 5px;
+  height: 3vh;
+  width: 60vw;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
