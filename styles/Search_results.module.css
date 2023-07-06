@@ -3,9 +3,63 @@
     margin: 10px;
 }
 
+.searchInput {
+    margin: 10px;
+    height: 25px;
+}
+
+.searchButton {
+    height: 24px;
+    width: 20px;
+}
+
 .searchTitleSection {
     margin: 20px;
 }
 .searchTitleSection h3 {
     margin: 15px 0 0 10px;
 }
+
+.listSection {
+    display: flex;
+    justify-content: center;
+}
+
+.listDiv {
+    border: solid 1px white;
+    width: 800px;
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+
+.movies {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 10px; 
+    list-style-type: none; 
+}
+  
+.tiles {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: black;
+}
+  
+.pagesBar {
+    display: flex;
+    justify-content: center;
+}
+.numbers {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+  }

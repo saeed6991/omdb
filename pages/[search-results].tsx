@@ -1,15 +1,16 @@
+require('dotenv').config();
 import React, { useState } from 'react';
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import styles from '../styles/Search_results.module.css';
-require('dotenv').config();
 import { useRouter } from 'next/router';
+import { FaSearch  } from 'react-icons/fa';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function SearchResults({ searchItem, page , jsonData}) {
   const [searchTerm, setSearchTerm] = useState('');
-
+  const numberOfPages = jsonData['totalResults']/10;
   const router = useRouter();
   console.log(jsonData); //here we can see the object responses
 
@@ -24,6 +25,10 @@ export default function SearchResults({ searchItem, page , jsonData}) {
       query: { searchItem: searchTerm, page: 1 }
     });
   };
+
+  const changePage = async () => {
+
+  }
 
   return (
     <>
@@ -42,7 +47,7 @@ export default function SearchResults({ searchItem, page , jsonData}) {
             value={searchTerm}
             onChange={handleInputChange}
           />
-          <button type="submit" className={styles.searchButton}>Search</button>
+          <button type="submit" className={styles.searchButton}><FaSearch  className={styles.searchIcon} /></button>
         </form>
         {
           jsonData.Response ==="True" ? (
@@ -50,8 +55,34 @@ export default function SearchResults({ searchItem, page , jsonData}) {
             <section className={styles.searchTitleSection}>
               <h1>Search "{searchItem}"</h1>
             </section>
-            <section className={styles.foundTitlesSection}></section>
-            <section className={styles.listSection}></section>
+            <section className={styles.foundTitlesSection}>
+              
+            </section>
+            <section className={styles.listSection}>
+              <div className={styles.listDiv}>
+                <ul className={styles.movies}> 
+                  {jsonData['Search'].map(item => {
+                    return(
+                        <li key={item['Title']} className={styles.tiles}>
+                          {item['Title']}
+                          <div className={styles.poster}>
+                            <img src={item['Poster']} style={{height: 'auto', width:'80px' }}/>
+                          </div>
+                        </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </section>
+            <section className={styles.pagesBar}>
+                  <div className={styles.previousPage}></div>
+                  <div className={styles.pageNumbers}>
+                  {Array.from({ length: numberOfPages }, (_, i) => (
+                    <div onClick={changePage} className={styles.numbers}>{i+1}</div>
+                  ))}
+                  </div>
+                  <div className={styles.nextPage}></div>
+            </section>
             </>
           ) : (         
             <section className={styles.searchTitleSection}>

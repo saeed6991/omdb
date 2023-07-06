@@ -1,26 +1,12 @@
-
-export async function getStaticProps({ query }) {
-  const searchTerm = query.name; // Access the name query parameter
-  const page = query.page; // Access the page query parameter
-  const searchItem = query.searchItem; // Access the searchItem query parameter
-
-  var apicall = "https://www.omdbapi.com/?";
-  const apiKey = "&apikey=41b8dffa";
-  apicall = apicall + "has=" + searchTerm + "&p=" + page + apiKey; // Use the page query parameter
-  const response = await fetch(apicall);
-  const jsonData = await response.json();
-  console.log(jsonData); //here we can see the object responses
-  return {
-    props: { 
-      searchItem,
-      jsonData,
-    },
-  };
-}
-
-export async function getStaticPaths() {
-  return {
-    paths: [],
-    fallback: true,
-  };
-}
+{
+                          jsonData['Search'].map(item => {
+                            return(
+                            <li key={item['Title']} className={styles.tiles}>{item['Title']}</li>
+                            )
+                          })}
+                          {jsonData['Search'].map(item => {
+                            return (
+                              <img src={item['Poster']} alt={item['Title']}/>
+                            );
+                          })
+                        }
