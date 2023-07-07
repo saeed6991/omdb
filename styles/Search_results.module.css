@@ -55,6 +55,7 @@
     display: flex;
     justify-content: center;
 }
+
 .numbers {
     display: inline-block;
     padding: 5px 10px;
@@ -63,3 +64,9 @@
     border-radius: 5px;
     cursor: pointer;
   }
+
+.dot {
+    display: inline-block;
+    margin: 5px;
+    cursor: default;
+}

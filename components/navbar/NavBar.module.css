@@ -20,12 +20,17 @@
 .logo {
   font-size: 1.6rem;
   padding: 1rem;
+  
+}
+
+.logo:hover {
+  background-color: #3c7d70;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
 }
 
 .menu {
-  display: flex;
-  gap: 1rem;
-  font-size: 1.2rem;
+  position: relative;
 }
 
 .menu li:hover {
@@ -35,10 +40,33 @@
 .menu li {
   padding: 0.5rem 1rem;
   list-style: none;
-  transition: 300ms ease;
+  transition: 300ms ease-in-out;
   border-radius: 5px;
 }
 
 .menu:last-child {
   margin-right: 1rem;
+}
+
+
+.searchIcon {
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.searchForm {
+  position: relative;
+  display: inline-block;
+}
+
+.searchInput {
+  width: 160px;
+  padding: 6px 8px;
+  opacity: 1;
+  transition: all 2s ease; /* Transition animation */
+}
+
+
+.searchButton {
+  background-color: #3c7d70;
 }

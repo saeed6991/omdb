@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 export default function SearchResults({ searchItem, page , jsonData}) {
   const [searchTerm, setSearchTerm] = useState('');
-  const numberOfPages = jsonData['totalResults']/10;
+  const numberOfPages = Math.ceil(jsonData['totalResults']/10);
   const router = useRouter();
   console.log(jsonData); //here we can see the object responses
 
@@ -39,16 +39,6 @@ export default function SearchResults({ searchItem, page , jsonData}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <form className={styles.searchForm} onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Search..."
-            className={styles.searchInput}
-            value={searchTerm}
-            onChange={handleInputChange}
-          />
-          <button type="submit" className={styles.searchButton}><FaSearch  className={styles.searchIcon} /></button>
-        </form>
         {
           jsonData.Response ==="True" ? (
             <>
@@ -77,9 +67,27 @@ export default function SearchResults({ searchItem, page , jsonData}) {
             <section className={styles.pagesBar}>
                   <div className={styles.previousPage}></div>
                   <div className={styles.pageNumbers}>
-                  {Array.from({ length: numberOfPages }, (_, i) => (
-                    <div onClick={changePage} className={styles.numbers}>{i+1}</div>
-                  ))}
+                  {
+                    numberOfPages < 10 ? (
+                      Array.from({ length: numberOfPages }, (_, i) => (
+                        <>
+                        <div onClick={changePage} className={styles.numbers}>{i+1}</div>
+                        </>
+                      ))    
+                    ) : (
+                    <>
+                    <div onClick={changePage} className={styles.numbers}>1</div>
+                    <div onClick={changePage} className={styles.numbers}>2</div>
+                    <div onClick={changePage} className={styles.numbers}>3</div>
+                    <div onClick={changePage} className={styles.numbers}>4</div>
+                    <div onClick={changePage} className={styles.dot}>.</div>
+                    <div onClick={changePage} className={styles.dot}>.</div>
+                    <div onClick={changePage} className={styles.dot}>.</div>
+                    <div onClick={changePage} className={styles.numbers}>{numberOfPages}</div>
+                    </>
+                    )
+                  
+                  }
                   </div>
                   <div className={styles.nextPage}></div>
             </section>

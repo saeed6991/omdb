@@ -1,0 +1,18 @@
+{isHovered && (
+            <form className={styles.searchForm} onSubmit={handleSubmit}>
+              <input
+                type="text"
+                placeholder="Search..."
+                className={styles.searchInput}
+                value={searchTerm}
+                onChange={handleInputChange}
+                autoFocus
+              />
+              <button type="submit" className={styles.searchButton}>
+                
+              </button>
+            </form>
+          )}
+
+
+        
