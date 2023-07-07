@@ -51,8 +51,12 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: black;
-    
+    background-color: black;   
+}
+
+.tiles a:hover {
+    cursor: default;
+    color:dodgerblue;
 }
 
 .info {

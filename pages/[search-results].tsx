@@ -29,8 +29,16 @@ export default function SearchResults({ searchItem, page , jsonData}) {
     const divText = pageNumber.toString();
     router.push({
       pathname: '/search-results',
-      query: { searchItem: searchItem, page: divText} // Include the searchItem in the query object
+      query: { searchItem: searchItem, page: divText} 
     });
+  };
+
+  const viewPage = (item) => {
+    console.log(item);
+    router.push({
+      pathname:'/id',
+      query: {imdbID: item['imdbID']}
+    })
   }
 
   return (
@@ -48,19 +56,16 @@ export default function SearchResults({ searchItem, page , jsonData}) {
             <section className={styles.searchTitleSection}>
               <h1>Search "{searchItem}" Page {page}</h1>
             </section>
-            <section className={styles.foundTitlesSection}>
-              
-            </section>
             <section className={styles.listSection}>
               <div className={styles.listDiv}>
                 <ul className={styles.movies}> 
                   {jsonData['Search'].map(item => {
                     return(
                       <li key={item['Title']} className={styles.tiles}>
-                        {item['Title']} ({item['Year']})
+                        <a onClick={() => viewPage(item)}>{item['Title']} ({item['Year']})</a>
                         <div className={styles.details}>
                           <div className={styles.poster}>
-                            <img src={item['Poster']} style={{height: 'auto', width:'80px' }}/>
+                            <img src={item['Poster']} style={{height: 'auto', width:'80px' }} onClick={() => viewPage(item)}/>
                           </div>
                           <div className='infos'>
                             <ul className={styles.info}>
