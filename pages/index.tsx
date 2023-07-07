@@ -3,8 +3,7 @@ import Head from 'next/head';
 import { Inter } from 'next/font/google';
 import styles from '../styles/Search.module.css';
 import { useRouter } from 'next/router';
-import { FaSearch  } from 'react-icons/fa';
-require('dotenv').config();
+import { FaSearch } from 'react-icons/fa';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,20 +11,16 @@ export default function Search({ jsonData }) {
   const [searchTerm, setSearchTerm] = useState('');
   const router = useRouter();
 
-  const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log('Search term:', searchTerm);
+  const viewPage = (item) => {
+    console.log(item);
     router.push({
-      pathname: '/search-results',
-      query: { searchItem: searchTerm, page: 1} // Include the searchItem in the query object
+      pathname: '/movies/id',
+      query: { imdbID: item['imdbID'] }
     });
   };
 
-  var today = new Date().toLocaleDateString('en-US').toString()
+  var today = new Date().toLocaleDateString('en-US').toString();
 
   return (
     <>
@@ -36,31 +31,41 @@ export default function Search({ jsonData }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        
       </main>
       <section className={styles.recommendations}>
         <h2>Featured for today {today}</h2>
         <section className={styles.listSection}>
-              <div className={styles.listDiv}>
-                <ul className={styles.movies}> 
-                  {jsonData.map(item => {
-                    return(
-                        <li key={item['Title']} className={styles.tiles}>
-                          {item['Title']}
-                          <div className={styles.poster}>
-                            <img src={item['Poster']} style={{height: 'auto', width:'80px' }}/>
-                          </div>
-                        </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            </section>
+          <div className={styles.listDiv}>
+            <ul className={styles.movies}>
+              {jsonData.map((item) => (
+                <li key={item['Title']} className={styles.tiles}>
+                  <a className={styles.tilesTitle} onClick={() => viewPage(item)}>
+                    {item['Title']} ({item['Year']})
+                  </a>
+                  <div className={styles.details}>
+                    <div className={styles.poster}>
+                      <img
+                        src={item['Poster']}
+                        style={{ height: 'auto', width: '80px' }}
+                        onClick={() => viewPage(item)}
+                      />
+                    </div>
+                    <div className="infos">
+                      <ul className={styles.info}>
+                        <li>type: {item['Type']}</li>
+                        <li>imdb ID: {item['imdbID']}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
       </section>
     </>
   );
 }
-
 
 export async function getStaticProps () {
   return {

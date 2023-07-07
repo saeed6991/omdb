@@ -20,10 +20,9 @@ const NavBar: React.FC<NavBarProps> = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Search term:', searchTerm);
     router.push({
-      pathname: '/search-results',
-      query: { searchItem: searchTerm, page: 1} // Include the searchItem in the query object
+      pathname: '/search/search-results',
+      query: { searchItem: searchTerm, page: 1} 
     });
   };
 
