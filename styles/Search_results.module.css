@@ -33,13 +33,16 @@
     padding: 5px;
 }
 
-
 .movies {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
     grid-gap: 10px; 
     list-style-type: none; 
+}
+
+.details {
+    display: flex;
 }
   
 .tiles {
@@ -49,6 +52,14 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: black;
+    
+}
+
+.info {
+    list-style-type: none; 
+    font-size: 15px;
+    margin-left:10px;
+    margin-top:5px;
 }
   
 .pagesBar {
@@ -70,3 +81,4 @@
     margin: 5px;
     cursor: default;
 }
+

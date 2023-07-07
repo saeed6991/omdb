@@ -20,7 +20,6 @@
 .logo {
   font-size: 1.6rem;
   padding: 1rem;
-  
 }
 
 .logo:hover {
@@ -52,6 +51,8 @@
 .searchIcon {
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+  margin-top: 10px;
+  font-size: 20px;
 }
 
 .searchForm {
@@ -59,14 +60,39 @@
   display: inline-block;
 }
 
-.searchInput {
-  width: 160px;
-  padding: 6px 8px;
-  opacity: 1;
-  transition: all 2s ease; /* Transition animation */
-}
 
+
+@media (min-width: 700px) {
+  .searchInput {
+    width: 600px;
+    padding: 6px 8px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    margin-right: 2px;
+  }
+}
+@media (max-width: 700px) {
+  .searchInput {
+    width: 250px;
+    padding: 6px 8px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    margin-right: 2px;
+  }
+}
+@media (min-width: 1000px) {
+  .searchInput {
+    width: 600px;
+    padding: 6px 8px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    margin-right: 2px;
+  }
+}
 
 .searchButton {
   background-color: #3c7d70;
+  font-size: 20px;
+  margin-top: 1px;
+  width: 40px;
 }
