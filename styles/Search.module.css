@@ -44,6 +44,7 @@
 }
 .info {
   list-style-type: none;
+  margin-left: 5px;
 }
 
 .tiles {
@@ -58,4 +59,12 @@
 .movies a:hover {
   cursor: pointer;
   color:dodgerblue;
+}
+
+.details {
+  display: flex;
+}
+
+.poster {
+  margin-top: 4px;
 }

@@ -73,7 +73,7 @@ export default function SearchResults({ searchItem, page, jsonData }) {
                       <div className={styles.poster}>
                         <img
                           src={item['Poster']}
-                          style={{ height: 'auto', width: '80px' }}
+                          style={{ height: 'auto', width: '80px', cursor:'pointer' }}
                           onClick={() => viewPage(item)}
                         />
                       </div>

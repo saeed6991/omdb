@@ -46,16 +46,14 @@ export default function Search({ jsonData }) {
                     <div className={styles.poster}>
                       <img
                         src={item['Poster']}
-                        style={{ height: 'auto', width: '80px' }}
+                        style={{ height: 'auto', width: '80px', cursor:'pointer' }}
                         onClick={() => viewPage(item)}
                       />
                     </div>
-                    <div className="infos">
                       <ul className={styles.info}>
                         <li>type: {item['Type']}</li>
                         <li>imdb ID: {item['imdbID']}</li>
                       </ul>
-                    </div>
                   </div>
                 </li>
               ))}
