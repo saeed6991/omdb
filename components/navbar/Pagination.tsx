@@ -39,7 +39,7 @@ function Pagination({ numberOfPages, currentPage, handlePageClick }) {
               {numberOfPages}
             </div>
           </>
-        ) : currentPage > 3 && currentPage < numberOfPages - 3 ? (
+        ) : currentPage > 3 && currentPage <= numberOfPages - 3 ? (
           <>
             <div onClick={() => handleDivClick(1)} className={styles.numbers}>
               1
@@ -51,15 +51,53 @@ function Pagination({ numberOfPages, currentPage, handlePageClick }) {
             <div onClick={() => handleDivClick(currentPage)} className={styles.numbers}>
               {currentPage}
             </div>
-            <div onClick={() => handleDivClick(currentPage + 1)} className={styles.numbers}>
-              {currentPage + 1}
+            <div onClick={() => handleDivClick(currentPage -(-1))} className={styles.numbers}>
+              {currentPage - (-1) }
             </div>
             <div className={styles.dot}>...</div>
             <div onClick={() => handleDivClick(numberOfPages)} className={styles.numbers}>
               {numberOfPages}
             </div>
           </>
-        ) : currentPage >= numberOfPages - 3 && currentPage < numberOfPages - 2 ? (
+        ) : currentPage == numberOfPages - 2 ? (
+          <>
+            <div onClick={() => handleDivClick(1)} className={styles.numbers}>
+              1
+            </div>
+            <div className={styles.dot}>...</div>
+            <div onClick={() => handleDivClick(currentPage - 1)} className={styles.numbers}>
+              {currentPage - 1}
+            </div>
+            <div onClick={() => handleDivClick(currentPage)} className={styles.numbers}>
+              {currentPage}
+            </div>
+            <div onClick={() => handleDivClick(currentPage -(-1))} className={styles.numbers}>
+              {currentPage - (-1)}
+            </div>
+            <div onClick={() => handleDivClick(numberOfPages)} className={styles.numbers}>
+              {numberOfPages}
+            </div>
+          </>
+        ) : currentPage == numberOfPages -1 ? (
+          <>
+          <div onClick={() => handleDivClick(1)} className={styles.numbers}>
+              1
+            </div>
+            <div className={styles.dot}>...</div>
+            <div onClick={() => handleDivClick(currentPage - 2)} className={styles.numbers}>
+              {currentPage - 2}
+            </div>
+            <div onClick={() => handleDivClick(currentPage - 1)} className={styles.numbers}>
+              {currentPage - 1}
+            </div>
+            <div onClick={() => handleDivClick(currentPage)} className={styles.numbers}>
+              {currentPage}
+            </div>
+            <div onClick={() => handleDivClick(numberOfPages)} className={styles.numbers}>
+              {numberOfPages}
+            </div>
+            </>
+        ) : currentPage == numberOfPages ? (
           <>
             <div onClick={() => handleDivClick(1)} className={styles.numbers}>
               1
@@ -74,39 +112,11 @@ function Pagination({ numberOfPages, currentPage, handlePageClick }) {
             <div onClick={() => handleDivClick(currentPage - 1)} className={styles.numbers}>
               {currentPage - 1}
             </div>
-            <div onClick={() => handleDivClick(currentPage)} className={styles.numbers}>
-              {currentPage}
-            </div>
-            <div onClick={() => handleDivClick(currentPage + 1)} className={styles.numbers}>
-              {currentPage + 1}
-            </div>
-            <div className={styles.dot}>...</div>
             <div onClick={() => handleDivClick(numberOfPages)} className={styles.numbers}>
               {numberOfPages}
             </div>
           </>
-        ) : currentPage === numberOfPages ? (
-          <>
-            <div onClick={() => handleDivClick(1)} className={styles.numbers}>
-              1
-            </div>
-            <div className={styles.dot}>...</div>
-            <div onClick={() => handleDivClick(currentPage - 3)} className={styles.numbers}>
-              {currentPage - 3}
-            </div>
-            <div onClick={() => handleDivClick(currentPage - 2)} className={styles.numbers}>
-              {currentPage - 2}
-            </div>
-            <div onClick={() => handleDivClick(currentPage - 1)} className={styles.numbers}>
-              {currentPage - 1}
-            </div>
-            <div onClick={() => handleDivClick(numberOfPages)} className={styles.numbers}>
-              {numberOfPages}
-            </div>
-          </>
-        ) : (
-          <></>
-        )}
+        ):(<></>)}
       </div>
       <div className={styles.nextPage}></div>
     </section>
