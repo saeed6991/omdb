@@ -20,6 +20,7 @@ const NavBar: React.FC<NavBarProps> = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsHovered(false);
     router.push({
       pathname: '/search/search-results',
       query: { searchItem: searchTerm, page: 1} 
@@ -30,12 +31,6 @@ const NavBar: React.FC<NavBarProps> = () => {
     setIsHovered(true);
     const interval = setInterval(()=>{}, 100);
     clearInterval(interval);
-  };
-
-  const handleIconLeave = () => {
-    const interval = setInterval(()=>{}, 500);
-    clearInterval(interval);
-    setIsHovered(false);
   };
 
   return (
@@ -53,7 +48,7 @@ const NavBar: React.FC<NavBarProps> = () => {
               </li> </> )
               : (
                 <>
-                <li  onMouseLeave={handleIconLeave}>
+                <li>
                   <form className={styles.searchForm} onSubmit={handleSubmit}>
                     <input
                       type="text"
@@ -64,7 +59,7 @@ const NavBar: React.FC<NavBarProps> = () => {
                       autoFocus
                     />
                     <button type="submit" className={styles.searchButton}>
-                    <FaSearch className={styles.searchIcon} onMouseLeave={handleIconLeave}/>
+                    <FaSearch className={styles.searchIcon} />
                     </button>
                   </form>
                 </li>

@@ -22,8 +22,8 @@ export default function ViewPage({ imdbID, jsonData }) {
         <h1 className={styles.title}>{jsonData['Title']} - ({jsonData['Year']})</h1>
         <img src={jsonData['Poster']} className={styles.poster} />
         <p className={styles.paragraph}>Runtime: {jsonData['Runtime']}</p>
-        <h2 className={styles.subtitle}>Type</h2>
-        <p>{jsonData['Type']}</p>
+        <h2 className={styles.subtitle}>Type | imdbID</h2>
+        <p>{jsonData['Type']} | {jsonData['imdbID']}</p>
         <h2 className={styles.subtitle}>Rated</h2>
         <p>{jsonData['Rated']}</p>
         <h2 className={styles.subtitle}>Awards</h2>
@@ -32,6 +32,8 @@ export default function ViewPage({ imdbID, jsonData }) {
         <p>{jsonData['Country']}</p>
         <h2 className={styles.subtitle}>Language</h2>
         <p>{jsonData['Language']}</p>
+        <h2 className={styles.subtitle}>Writer</h2>
+        <p>{jsonData['Writer']}</p>
         <h2 className={styles.subtitle}>Actors</h2>
         <p>{jsonData['Actors']}</p>
         <h2 className={styles.subtitle}>Plot</h2>

@@ -56,6 +56,6 @@
 }
 
 .movies a:hover {
-  cursor: default;
+  cursor: pointer;
   color:dodgerblue;
 }
