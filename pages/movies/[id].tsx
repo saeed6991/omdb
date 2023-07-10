@@ -26,6 +26,20 @@ export default function ViewPage({ imdbID, jsonData }) {
         <p>{jsonData['Type']} | {jsonData['imdbID']}</p>
         <h2 className={styles.subtitle}>Rated</h2>
         <p>{jsonData['Rated']}</p>
+        <h2 className={styles.subtitle}>Genre</h2>
+        <p>{jsonData['Genre']}</p>
+        <h2 className={styles.subtitle}>Director</h2>
+        <p>{jsonData['Director']}</p>
+        <h2 className={styles.subtitle}>Rating</h2>
+        {
+          jsonData['Ratings'].map(item=>{
+            return(
+              <p>{item['Source']} : {item['Value']}</p>
+            );
+          })
+        }
+        <h2 className={styles.subtitle}>IMDB Rating</h2>
+        <p>{jsonData['imdbRating']}</p>
         <h2 className={styles.subtitle}>Awards</h2>
         <p>{jsonData['Awards']}</p>
         <h2 className={styles.subtitle}>Country</h2>
